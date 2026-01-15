@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Đăng nhập</title>
+
+  <!-- Google reCAPTCHA v2 checkbox -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <style>
+    body { font-family: Arial; max-width: 520px; margin: 40px auto; }
+    .box { border: 1px solid #ddd; border-radius: 10px; padding: 18px; margin-bottom: 14px; }
+    .row { margin: 10px 0; display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    input { width: 100%; padding: 10px; box-sizing:border-box; }
+    button { padding: 10px 14px; cursor: pointer; }
+    .hidden { display: none; }
+    .muted { color: #666; font-size: 13px; }
+    a button { width: 100%; }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>Đăng nhập</h2>
+    <div class="row"><input id="loginEmail" placeholder="Gmail" /></div>
+    <div class="row"><input id="loginPass" type="password" placeholder="Mật khẩu" /></div>
+    <button id="btnLogin">Đăng nhập</button>
+
+    <hr />
+
+    <div class="row" style="width:100%">
+      <a href="/auth/google" style="flex:1; min-width:200px"><button>Liên kết Google</button></a>
+      <a href="/auth/facebook" style="flex:1; min-width:200px"><button>Liên kết Facebook</button></a>
+    </div>
+
+    <p class="muted">Chưa có tài khoản? <button id="btnShowRegister">Đăng ký</button></p>
+  </div>
+
+  <div class="box hidden" id="registerBox">
+    <h2>Đăng ký</h2>
+
+    <!-- Step 1: CAPTCHA -->
+    <div id="captchaStep">
+      <p class="muted">Hoàn thành CAPTCHA để mở form đăng ký.</p>
+      <div class="g-recaptcha" data-sitekey="6Lc1BUssAAAAALOmKTYrzdCajgQzDw1xCtwqo2ME"></div>
+      <div class="row">
+        <button id="btnCaptchaDone">Tiếp tục</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Form -->
+    <div id="formStep" class="hidden">
+      <div class="row"><input id="fullName" placeholder="Họ tên" /></div>
+      <div class="row"><input id="email" placeholder="Gmail" /></div>
+      <div class="row"><input id="dob" type="date" /></div>
+      <div class="row"><input id="phone" placeholder="Số điện thoại" /></div>
+      <div class="row"><input id="password" type="password" placeholder="Mật khẩu" /></div>
+      <button id="btnRegister">Tạo tài khoản</button>
+    </div>
+
+    <p id="msg" class="muted"></p>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
